@@ -1,0 +1,123 @@
+{% from 'form_helper.html' import displayField %}
+
+{% block body %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/register.css">
+    <title>Register</title>
+    <link rel="icon" href="/static/img/knight.jpg">
+    <style>
+        #load{
+            width:100%;
+            height:100%;
+            position:fixed;
+            z-index:9999;
+            background: black;
+        }   
+    </style>
+    
+    <script>
+        document.onreadystatechange = function () {
+  var state = document.readyState
+  if (state == 'interactive') {
+       document.querySelector(body).style.visibility="hidden";
+  } else if (state == 'complete') {
+      setTimeout(function(){
+         document.getElementById('interactive');
+         document.getElementById('load').style.visibility="hidden";
+         document.getElementById('contents').style.visibility="visible";
+      },200);
+  }
+}
+
+    </script>
+</head>
+<body style="display: flex; flex-direction: column;">
+    <div id="load"></div>
+    <div class="dropdown">
+        <div id="Search" class="dropbtn" onclick="tyFunction(this), myFunction(this)">
+        
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+        </div>
+
+        <div id="myDropdown" class="dropdown-content">
+            <a href="/home">Home</a>
+            <a href="/register" id="regy">Become a writer</a>
+            <a href="/login" id=logy>Login</a>
+            <a href="/dashboard" id="crea">Creator Dashboard</a>
+            <a href="/logout" id='lgform'>{{lgtitle}}</a>
+            <a href="/search">Search</a>
+        </div>
+    </div>
+    </div>
+    <div id="titledate">
+        <div id="date"></div>
+        <div id="title"> 
+            The OHS Underground 
+        </div>
+        <div class="separator">For Students By Students</div>
+        <div id="topics">
+            <a href="/search/category/World/1" style="text-decoration: none; color: goldenrod;">World</a>
+                <a href="/search/category/U.S/1" style="text-decoration: none; color: goldenrod;">U.S</a>
+                <a href="/search/category/Politics/1" style="text-decoration: none; color: goldenrod;">Politics</a>
+                <a href="/search/category/FL/1" style="text-decoration: none; color: goldenrod;">FL</a>
+                <a  href="/search/category/Opinion/1" style="text-decoration: none; color: goldenrod;">Opinion</a>
+                <a  href="/search/category/Tech/1" style="text-decoration: none; color: goldenrod;">Tech</a>
+                <a  href="/search/category/Science/1" style="text-decoration: none; color: goldenrod;">Science</a>
+                <a  href="/search/category/Sports/1" style="text-decoration: none; color: goldenrod;">Sports</a>
+                <a  href="/search/category/Books/1" style="text-decoration: none; color: goldenrod;">Books</a>
+                <a  href="/search/category/Arts/1" style="text-decoration: none; color: goldenrod;">Arts</a>
+                <a  href="/search/category/Social-issues/1" style="text-decoration: none; color: goldenrod;">Social-issues</a>
+                <a  href="/search/category/Philosophy/1" style="text-decoration: none; color: goldenrod;">Philosophy</a>
+                <a href="/search/category/Drama/1" style="text-decoration: none; color: goldenrod;">Drama</a>
+                <a  href="/search/category/Food/1" style="text-decoration: none; color: goldenrod;">Food</a>
+                <a  href="/search/category/History/1" style="text-decoration: none; color: goldenrod;">History</a>
+                <a  href="/search/category/Media/1" style="text-decoration: none; color: goldenrod;">Media</a>
+                <a  href="/search/category/School-related/1" style="text-decoration: none; color: goldenrod;">School-related</a>
+                <a  href="/search/category/Other/1" style="text-decoration: none; color: goldenrod;">Other</a>
+        </div>
+
+    </div>
+    <div id="toptl">Create Account</div>
+    <form action="/register" id="regform" method="POST">
+        {{displayField(form.email, 'School Email', autocomplete ='off', id='inpu')}}
+        {{displayField(form.username, 'username', id='inpu', autocomplete ='off')}}
+        {{displayField(form.password, 'Password', id='inpu')}}
+        {{displayField(form.confirm_pswd, 'Retype password', id='inpu')}}
+        {{displayField(form.name, 'First and last name', id='inpu', autocomplete ='off')}}
+        {{displayField(form.phone, ' 10 digit phone number', id='inpu', autocomplete ='off')}}
+        {{displayField(form.why, 'Why do you want to become a journalist for The OHS Underground', id='tarea', cols="30", rows="10")}}
+        {{form.submit_button(id='Sinpu')}}
+        {{ form.csrf_token }}
+        <!--
+        <input type="text" placeholder="email">
+        <input type="text" placeholder="password">
+        <input type="text" placeholder="confirm password">
+        <input type="text" placeholder="first and last name">
+        <input type="text" placeholder="phone number/optional">
+        <textarea name="" id="" cols="30" rows="10" placeholder="Why do you want to become a journalist for The OHS Underground"></textarea>
+        <input type="submit">
+        -->
+    </form>
+</body>
+<script>
+    var x = screen.width
+    
+    if(parseInt(x) < 500){
+        document.getElementById('topics').remove()
+        document.getElementById('largeScreen').style.transform = 'scale(1, 1)'
+
+    }
+    function myFunction(x) {
+        x.classList.toggle("change");
+        
+    }
+</script>
+    <script src="/static/js/register.js"></script>
+</html>
+{% endblock %}

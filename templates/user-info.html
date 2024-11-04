@@ -1,0 +1,188 @@
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>info</title>
+    <link rel="icon" href="/static/img/knight.jpg">
+    <link rel="stylesheet" href="/static/css/dash.css">
+    
+    
+    <script>
+        document.onreadystatechange = function () {
+  var state = document.readyState
+  if (state == 'interactive') {
+       document.getElementById('contents').style.visibility="hidden";
+  } else if (state == 'complete') {
+      setTimeout(function(){
+         document.getElementById('interactive');
+         document.getElementById('load').style.visibility="hidden";
+         document.getElementById('contents').style.visibility="visible";
+      },500);
+  }
+}
+
+    </script>
+    
+    
+      
+</head>
+<body>
+    <div id="load"></div>
+<div id="contents">
+          
+    
+    <div class="dropdown">
+        <div id="Search" class="dropbtn" onclick="tyFunction(this), myFunction(this)">
+        
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+        </div>
+
+        <div id="myDropdown" class="dropdown-content">
+          <a href="/home">Home</a>
+          
+          
+          <a href="/dashboard" id="crea">Creator Dashboard</a>
+          <a href="/logout" id='lgform'>Logout</a>
+          <a href="/search">Search</a>
+        </div>
+    </div>
+        
+
+    </div>
+    <div id="titledate">
+        <div id="date"></div>
+        <div id="title"> 
+            The OHS Underground 
+        </div>
+        <div class="separator">For Students By Students</div>
+        <div id="topics">
+            <a href="/search/category/World/1" style="text-decoration: none; color: goldenrod;">World</a>
+                <a href="/search/category/U.S/1" style="text-decoration: none; color: goldenrod;">U.S</a>
+                <a href="/search/category/Politics/1" style="text-decoration: none; color: goldenrod;">Politics</a>
+                <a href="/search/category/FL/1" style="text-decoration: none; color: goldenrod;">FL</a>
+                <a  href="/search/category/Opinion/1" style="text-decoration: none; color: goldenrod;">Opinion</a>
+                <a  href="/search/category/Tech/1" style="text-decoration: none; color: goldenrod;">Tech</a>
+                <a  href="/search/category/Science/1" style="text-decoration: none; color: goldenrod;">Science</a>
+                <a  href="/search/category/Sports/1" style="text-decoration: none; color: goldenrod;">Sports</a>
+                <a  href="/search/category/Books/1" style="text-decoration: none; color: goldenrod;">Books</a>
+                <a  href="/search/category/Arts/1" style="text-decoration: none; color: goldenrod;">Arts</a>
+                <a  href="/search/category/Social-issues/1" style="text-decoration: none; color: goldenrod;">Social-issues</a>
+                <a  href="/search/category/Philosophy/1" style="text-decoration: none; color: goldenrod;">Philosophy</a>
+                <a href="/search/category/Drama/1" style="text-decoration: none; color: goldenrod;">Drama</a>
+                <a  href="/search/category/Food/1" style="text-decoration: none; color: goldenrod;">Food</a>
+                <a  href="/search/category/History/1" style="text-decoration: none; color: goldenrod;">History</a>
+                <a  href="/search/category/Media/1" style="text-decoration: none; color: goldenrod;">Media</a>
+                <a  href="/search/category/School-related/1" style="text-decoration: none; color: goldenrod;">School-related</a>
+                <a  href="/search/category/Other/1" style="text-decoration: none; color: goldenrod;">Other</a>
+        </div>
+
+    </div>
+
+    <div style="display: flex; flex-direction: row; color: white; width: 100%; height: 100%;">
+        <hr style="height: 98%; border-color: goldenrod;">
+        <div id="myartbox">
+            <div  id="artTitle">{{user.name}}'s Articles</div>
+            <hr style=" width: 100%; border-color: goldenrod;">
+        <div  id='artscroll' id="box" hidden>
+            
+            
+            {% for art in articles %}
+            
+                
+                <div  class="artcontainer">
+                    <a href="/article/{{art.id}}"><img src="{{art.thumbnail}}" alt="" style="width:  250px; height: 125px;"></a>
+                     <div style="color: goldenrod; margin-top: 5px; overflow-x: hidden; width: 250px;">Title: {{art.title}}</div>
+                     <div style='color: goldenrod;'>Category: {{art.category}}</div>
+                     
+                </div>
+                <br>
+                
+            {% endfor %}
+            
+        </div>
+            
+        </div>
+        <hr style="height: 98%; border-color: goldenrod;">
+        <div style="display: flex; width: 70%; flex-direction: column;" >
+            <div style="font-size: xx-large; align-self: center; ">User Info</div>
+            <div style="color: goldenrod; align-self: center; margin-bottom: 20px; font-size: x-large; margin-top: 40px;">Name: {{user.name}}</div>
+            <div style="color: goldenrod; align-self: center; margin-bottom: 20px; font-size: x-large;">Username: {{user.username}}</div>
+            <div style="color: goldenrod; align-self: center; margin-bottom: 20px; font-size: x-large;">Email: {{user.email}}</div>
+            <div style="color: goldenrod; align-self: center; margin-bottom: 20px; font-size: x-large;">Phone Number: {{user.phone}}</div>
+            <div style="color: goldenrod; align-self: center; margin-bottom: 20px; font-size: x-large;">Reason: {{user.reason}}</div>
+            <div style="color: goldenrod; align-self: center; margin-bottom: 20px; font-size: x-large;" >Admin Status: {{user.admin}}</div>
+            <input type="text" id="adminStat" value='{{user.admin}}' hidden>
+            {{adminform | safe}}
+            <form action="/backdoor/users/{{user.username}}" id="banform" style="align-self: center;" method="POST">
+                <input type="text" name="type" value="ban" hidden>
+    
+                <button type="button" style="border-color: goldenrod; border-style: ridge; background-color: black; color: white; height: 40px; width: 40px;" onclick="sbmt()">Ban</button>
+                <input autocomplete="off" style="border-color: goldenrod; border-style: ridge; background-color: black; color: white; height: 40px; width: 220px;"  type="text" name="reason" id="reason" placeholder="reason for ban">
+            </form>
+            
+            <script>
+                stat = document.getElementById('adminStat').value
+                username = '{{user.username}}'
+                document.getElementById('banname').value = username
+                document.getElementById('adform').method = 'POST'
+                document.getElementById('adform').action = '/backdoor/users/{{user.username}}'
+                function sbmt(){
+                    reason = document.getElementById('reason').value
+                    if(reason == ''){
+                        alert('must give reason')
+                    }else{
+                        document.getElementById('banform').submit()
+                    }
+                    
+                }
+                console.log(stat)
+                if (stat == 'True'){
+                    document.getElementById('make/takeadmin').value = 'Take admin permission'
+                }else if (stat == 'False'){
+                    document.getElementById('make/takeadmin').value = 'Enable admin permission'
+                }
+            </script>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    if(document.getElementById('artTitle').innerText == 'Preston Jones\'s Articles'){
+        document.getElementById('banform').remove()
+    }
+    function dlt(id){
+        
+        
+        document.getElementById('del' + id).hidden=true
+        document.getElementById('ays' + id).hidden=false
+        document.getElementById('cncl' + id).hidden=false
+        alert('all articles deleted are not retrievablle. Are you sure?')
+        
+
+    }
+    function cancel(id){
+        document.getElementById('del' + id).hidden=false
+        document.getElementById('ays' + id).hidden=true
+        document.getElementById('cncl' + id).hidden=true
+    }
+    function myFunction(x) {
+        x.classList.toggle("change");
+    }
+    function ready() {
+        alert('DOM is ready');
+
+    // image is not yet loaded (unless it was cached), so the size is 0x0
+        document.getElementById('box').hidden = false
+    }
+    //document.addEventListener("DOMContentLoaded", ready);
+    
+</script>
+<script src="/static/js/dash.js"></script>
+
+    
+</html>

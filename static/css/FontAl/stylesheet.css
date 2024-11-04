@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'Algerian_R';
+    src: url('AlgerianRA.eot');
+    src: url('AlgerianRA.eot?#iefix') format('embedded-opentype'),
+        url('AlgerianRA.woff2') format('woff2'),
+        url('AlgerianRA.woff') format('woff'),
+        url('AlgerianRA.ttf') format('truetype'),
+        url('AlgerianRA.svg#AlgerianRA') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

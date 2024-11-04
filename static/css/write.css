@@ -1,0 +1,266 @@
+body{
+    background-color: black;
+    margin-left: 4rem;
+    margin-right: 4rem ;
+    display: flex;
+    flex-direction: column;
+    color: goldenrod;
+
+}
+.bar1, .bar2, .bar3 {
+    width: 30px;
+    height: 2px;
+    background-color: goldenrod;
+    margin: 6px 0;
+    transition: 0.4s;
+  }
+  
+  /* Rotate first bar */
+  .change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
+    transform: rotate(-45deg) translate(-9px, 6px) ;
+  }
+  
+  /* Fade out the second bar */
+  .change .bar2 {
+    opacity: 0;
+  }
+  
+  /* Rotate last bar */
+  .change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
+    transform: rotate(45deg) translate(-8px, -8px) ;
+  }
+#smenu{
+    display: flex;
+    flex-direction: column;
+    
+   
+
+}
+#search{
+    display: inline-block;
+    cursor: pointer;
+   
+}
+#titledate{
+    border-bottom-style: double;
+    border-color: goldenrod;
+    display: flex;
+    flex-direction: column;
+    border-width: .5rem;
+    
+    
+}
+@font-face {
+    font-family: 'MyWebFont';
+    src: url(/static/css/FontAl/AlgerianRA.eot); /* IE9 Compat Modes */
+    src: url(/static/css/FontAl/AlgerianRA.eot) format('embedded-opentype'), /* IE6-IE8 */
+         url(/static/css/FontAl/AlgerianRA.woff2) format('woff2'), /* Super Modern Browsers */
+         url(/static/css/FontAl/AlgerianRA.woff) format('woff'), /* Pretty Modern Browsers */
+         url(/static/css/FontAl/AlgerianRA.ttf)  format('truetype'), /* Safari, Android, iOS */
+         url(/static/css/FontAl/AlgerianRA.svg) format('svg'); /* Legacy iOS */
+  }
+  
+  #title{
+      
+      font-family: 'MyWebFont';
+      color: goldenrod;
+      font-size: 4rem;
+     
+      align-self: center;
+  
+  }
+#date{
+    color: goldenrod;
+    margin-top: 1rem;
+    font-size: medium;
+}
+#menline{
+    margin: 0;
+    gap: 0;
+    color: goldenrod;
+    width: 20%;
+}
+#topics{
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    gap: 1rem;
+    
+    color: goldenrod;
+    padding: 10px;
+    
+    -webkit-background-clip: padding-box; /* for Safari */
+    background-clip: padding-box; /* Firefox 4+, Opera, Chrome */
+    align-self: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+}
+#articles{
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    
+    
+}
+#story{
+    width: 45%;
+    color: rgb(241, 234, 220);
+    font-size: 1rem;
+    margin-left: 50%;
+
+}
+#storytitle{
+    align-self: center;
+    color: white;
+    font-size: 3rem;
+    text-align: center;
+
+    
+}
+.separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: goldenrod;
+    font-style: italic;
+}
+  
+.separator::before,
+.separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid goldenrod;
+}
+  
+  .separator:not(:empty)::before {
+    margin-right: .25em;
+}
+  
+  .separator:not(:empty)::after {
+    margin-left: .25em;
+}
+#lin{
+    
+    
+}
+#toptitle{
+    align-self: center;
+    color: rgb(236, 229, 214);
+    font-size: 2.5rem;
+}
+#storyleft{
+    width: 18%;
+    color: white;
+    margin-right: 2%;
+    
+
+}
+#topimg{
+    border-left: solid;
+    border-right: solid;
+    border-left-color: goldenrod;
+    border-right-color: goldenrod;
+    padding-left: 1%;
+    padding-right: 1%;
+    border-right-style: groove;
+    border-left-style: groove;
+
+    
+}
+#storyright{
+    width: 18%;
+    margin-left: 2%;
+    color: white;
+}
+
+
+body{
+    background-color: black;
+}
+iframe{
+    color: green;
+    background-color: black;
+    border: 1px solid white;
+    /*color: white;*/
+    
+    
+}
+#textfield{
+    
+}
+button{
+    background-color: black;
+    color: goldenrod;
+    border-style: solid;
+    
+}
+option{
+    background-color: black;
+    color: goldenrod;
+}
+select{
+    background-color: black;
+    color: goldenrod;
+}
+input{
+    
+    background-color: black;
+    color: goldenrod;
+}
+.normal{
+    background-color: black;
+    
+    
+}
+#writebox{
+    align-self: center;
+}
+.dropbtn {
+    
+    cursor: pointer;
+  }
+  
+
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgb(37, 37, 37);
+    min-width: 160px;
+    overflow: auto;
+    color: goldenrod;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: goldenrod;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown a:hover {background-color: #ddd;}
+  
+  .show {display: block;}
+
+#subbutton{
+    margin-top: 2px;
+    width: 250px;
+    align-self: center;
+    padding: 12px;
+}
+.white{
+    color:whit;
+}

@@ -1,0 +1,162 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/articleViewer.css">
+    <title>{{article.title}}</title>
+    <link rel="icon" href="/static/img/knight.jpg">
+    <style>
+        #load{
+            width:100%;
+            height:100%;
+            position:fixed;
+            z-index:9999;
+            background: black;
+        }   
+    </style>
+    
+    <script>
+        document.onreadystatechange = function () {
+  var state = document.readyState
+  if (state == 'interactive') {
+       document.querySelector(body).style.visibility="hidden";
+  } else if (state == 'complete') {
+      setTimeout(function(){
+         document.getElementById('interactive');
+         document.getElementById('load').style.visibility="hidden";
+         document.getElementById('contents').style.visibility="visible";
+      },200);
+  }
+}
+
+    </script>
+</head>
+<body style="display: flex; flex-direction: column;">
+    <div id="load"></div>
+    <div class="dropdown">
+        <div id="Search" class="dropbtn" onclick="tyFunction(this), myFunction(this)">
+        
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+        </div>
+
+        <div id="myDropdown" class="dropdown-content">
+          <a href="/home">Home</a>
+          <a href="/register" id="regy">Become a writer</a>
+          <a href="/login" id=logy>Login</a>
+          <a href="/dashboard" id="crea">Creator Dashboard</a>
+          <a href="/logout" id='lgform'>{{lgtitle}}</a>
+          <a href="/search">Search</a>
+        </div>
+    </div>
+        
+
+    </div>
+    <div id="titledate">
+        <div id="date"></div>
+        <div id="title"> 
+            The OHS Underground 
+        </div>
+        <div class="separator">For Students By Students</div>
+        <div id="topics">
+            <a href="/search/category/World/1" style="text-decoration: none; color: goldenrod;">World</a>
+                <a href="/search/category/U.S/1" style="text-decoration: none; color: goldenrod;">U.S</a>
+                <a href="/search/category/Politics/1" style="text-decoration: none; color: goldenrod;">Politics</a>
+                <a href="/search/category/FL/1" style="text-decoration: none; color: goldenrod;">FL</a>
+                <a  href="/search/category/Opinion/1" style="text-decoration: none; color: goldenrod;">Opinion</a>
+                <a  href="/search/category/Tech/1" style="text-decoration: none; color: goldenrod;">Tech</a>
+                <a  href="/search/category/Science/1" style="text-decoration: none; color: goldenrod;">Science</a>
+                <a  href="/search/category/Sports/1" style="text-decoration: none; color: goldenrod;">Sports</a>
+                <a  href="/search/category/Books/1" style="text-decoration: none; color: goldenrod;">Books</a>
+                <a  href="/search/category/Arts/1" style="text-decoration: none; color: goldenrod;">Arts</a>
+                <a  href="/search/category/Social-issues/1" style="text-decoration: none; color: goldenrod;">Social-issues</a>
+                <a  href="/search/category/Philosophy/1" style="text-decoration: none; color: goldenrod;">Philosophy</a>
+                <a href="/search/category/Drama/1" style="text-decoration: none; color: goldenrod;">Drama</a>
+                <a  href="/search/category/Food/1" style="text-decoration: none; color: goldenrod;">Food</a>
+                <a  href="/search/category/History/1" style="text-decoration: none; color: goldenrod;">History</a>
+                <a  href="/search/category/Media/1" style="text-decoration: none; color: goldenrod;">Media</a>
+                <a  href="/search/category/School-related/1" style="text-decoration: none; color: goldenrod;">School-related</a>
+                <a  href="/search/category/Other/1" style="text-decoration: none; color: goldenrod;">Other</a>
+        </div>
+
+    </div>
+    {% if article.post_type == video%}
+    <video id="artVid" src="{{article.articleHTML}}" controls></video>
+    {% else %}
+    <div id="articleTitle"  >
+        {{article.title}}   
+    </div>
+    <div style="align-self: center;">
+        <img src="{{article.thumbnail}}" alt="" id="artThumb">
+    </div>
+    <div style="color: gold; align-self: center;">
+        By: {{article.author}}
+    </div>
+    <br>
+    <div id='html' hidden>
+        {{article.articleHTML}}
+    </div>
+    
+    <div id="articleinfo" style="color: white; align-self: center;">
+        {{article.articleHTML | safe}}
+    </div>
+
+    {%endif%}
+    </div>
+
+    <div style="color: white; align-self: center;">{{article.views}} views</div>
+    <div  id='repo' >
+        <img src="/static/img/reportIcon.png" alt="" style="height: 3rem; width: 3rem; align-self: center; ">
+         <div style=" color: white;font-size: small; align-self: center;">Report</div>
+
+   
+    </div>
+    
+    <form action="/article/{{article.id}}" method="POST" hidden id="repoForm">
+        <input type="text" name="type" value="report">
+    </form>
+    <script>
+        document.getElementById('repo').onclick = function(){
+            document.getElementById('repoForm').submit()
+        }
+    </script>
+
+    {{delete  |safe}}
+    {{topart |safe}}
+    
+    <div style="color:white;">{{article.date}}</div>
+    <script>
+
+        var x = {{article.id}}
+        document.getElementById('delform').action = '/article/' + x
+        document.getElementById('deleteId').value = x
+        document.getElementById('delform').method = 'POST'
+
+        document.getElementById('topform').action = '/article/' + x
+        document.getElementById('topId').value = x
+        document.getElementById('topform').method = 'POST'
+        
+        
+    </script>
+</body>
+<script>
+
+    var x = screen.width
+    
+    if(parseInt(x) < 500){
+        document.getElementById('topics').remove()
+        document.getElementById('largeScreen').style.transform = 'scale(1, 1)'
+
+    }
+    function myFunction(x) {
+        
+        x.classList.toggle("change");
+    }
+    let  artHtml = document.getElementById('html').innerText
+    //document.getElementById('articleinfo').innerHTML = artHtml
+
+</script>
+    <script src="/static/js/ArticleViewer.js"></script>
+</html>

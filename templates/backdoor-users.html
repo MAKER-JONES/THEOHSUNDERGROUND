@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>users</title>
+    <link rel="stylesheet" href="/static/css/acceptusers.css">
+</head>
+<body>
+    {% block body %}
+     {% for post in users %}
+
+     <hr>
+        <a href="/backdoor/users/{{post.username}}" style="text-decoration: none; color: green; border-color: green; border-style: ridge;">{{post.name}}</a>
+        
+     
+      
+     {% endfor %}
+    {% endblock%}
+    <script>
+        
+        function testf(x){
+            alert(x)
+        }
+        
+
+
+    </script>
+</body>
+
+</html>

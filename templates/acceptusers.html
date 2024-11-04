@@ -1,0 +1,44 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requests</title>
+    <link rel="stylesheet" href="/static/css/acceptusers.css">
+</head>
+<body>
+    {% block body %}
+     {% for post in requests %}
+
+     <hr>
+        <form action="/backdoor/requests" method="POST">
+            Email: <input name="email" type="text" value="{{post.email}}"   id="inputt" >
+            username: <input type="text" value="{{post.username}}" class='inp'  name="username"  id="inputt">
+            name: <input type="text" value="{{post.name}}" class='inp'  name="name"  id="inputt">
+            Phone Number: <input type="text" value="{{post.phone}}" class='inp'  name="phone"  id="inputt">
+            Reason:  <input type="text" value="{{post.reason}}" class='inp'  name="reason"  id="inputt">
+            <input type="text" value="{{post.id}}" class='inp'  name="id"  id="inputt" hidden>
+            <select name="ad" id="test" onchange="testf(this.value)">
+                <option value="accept">accept</option>
+                <option value="deny">deny</option>
+            </select>
+            
+            <input type="submit" id="sub">
+        </form>
+        
+     
+      
+     {% endfor %}
+    {% endblock%}
+    <script>
+        
+        function testf(x){
+            alert(x)
+        }
+        
+
+
+    </script>
+</body>
+
+</html>

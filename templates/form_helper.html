@@ -1,0 +1,24 @@
+{% macro displayField(fieldName, placeholderValue )%}
+<style>
+    /*
+    #test{
+        width: 100%;
+    }
+    */
+    #error{
+        color: goldenrod;
+        
+    }
+</style>
+
+    {{ fieldName(placeholder=placeholderValue, **kwargs )}}
+    <ul style="align-self: center; width: 250px;">
+        {% for error in fieldName.errors %}
+         <li id="error">{{ error }}</li>
+
+        {% endfor %}
+
+    </ul>
+
+
+{% endmacro %}

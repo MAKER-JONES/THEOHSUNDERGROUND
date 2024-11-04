@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>users</title>
+    <link rel="stylesheet" href="/static/css/acceptusers.css">
+</head>
+<body>
+    {% block body %}
+     {% for post in reported %}
+
+     <form action="/backdoor/reported" method="POST">
+        <div style="color: white;"> Title:</div> <a href="/article/{{post.id}}" style="text-decoration: none; color: green;">  {{post.title}}</a>
+        <br>
+        <div style="color: white;"> Author:</div> <div href="/article/{{post.id}}" style="text-decoration: none; color: green;">  {{post.author}}</div>
+        <input type="text" name="artID" value="{{post.id}}" hidden>
+        <input type="submit" value="remove" style="border-color: green ; border-style: solid;">
+    </form>
+        <hr>
+     
+      
+     {% endfor %}
+    {% endblock%}
+    <script>
+        
+        function testf(x){
+            alert(x)
+        }
+        
+
+
+    </script>
+</body>
+
+</html>

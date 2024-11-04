@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+     <style>
+         .options{
+            transition: 0.5s;
+            border-color: goldenrod;
+            border-style: solid;
+            margin-bottom: 10px;
+            text-align: center;
+            width:200px;
+            border-width: 2px;
+            align-self: center;
+            font-size: x-large;
+            
+            
+         }
+         .options:hover{
+             transition: 0.5s;
+             padding-left: 25px;
+             padding-right: 25px;
+         }
+     </style>
+</head>
+<body style="display: flex; flex-direction: column; background-color: black;">
+<div style="color: white; font-size: 10rem; align-self: center;">Admin</div>
+<div style="align-self: center; color: green; display: flex; flex-direction: column; margin-top: 400px; position: absolute;">
+    <div class='options' onclick="go('users')">Users</div>
+    <div class='options' onclick="go('requests')">User requests</div>
+    <div class='options' onclick="go('reported')">reported articles</div>
+    <div class='options' onclick="go('banned')">banned writers</div>
+</div>
+<script>
+    function go(add){
+        location.href = '/backdoor/' + add
+    }
+</script>
+</body>
+</html>

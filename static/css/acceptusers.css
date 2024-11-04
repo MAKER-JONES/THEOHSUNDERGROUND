@@ -1,0 +1,12 @@
+body{
+    background-color: black;
+    color: green;
+}
+input{
+    background-color: black;
+    color: green;
+    border-color: black;
+}
+#sub{
+    border-color: green;
+}

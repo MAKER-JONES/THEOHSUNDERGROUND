@@ -1,0 +1,39 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>banned</title>
+    <link rel="stylesheet" href="/static/css/acceptusers.css">
+</head>
+<body>
+    {% block body %}
+     {% for post in user %}
+
+     <hr>
+     Email: <input name="email" type="text" value="{{post.email}}"   id="inputt" disabled>
+     name: <input type="text" value="{{post.name}}" class='inp'  name="name"  id="inputt" disabled>
+     Phone Number: <input type="text" value="{{post.phone}}" class='inp'  name="phone"  id="inputt" disabled>
+     Reason:  <input type="text" value="{{post.ban_reason}}" class='inp'  name="ban_reason"  id="inputt" disabled>
+     Banned by: <input type="text" value="{{post.banned_by}}" disabled>
+        <form action="/backdoor/banned" method="POST">
+            <input type="text" name="username" value="{{post.username}}" hidden>
+            <input type="submit" id="sub" value="unban"> 
+        </form>
+        
+     
+      
+     {% endfor %}
+    {% endblock%}
+    <script>
+        
+        function testf(x){
+            alert(x)
+        }
+        
+
+
+    </script>
+</body>
+
+</html>
